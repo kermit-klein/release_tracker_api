@@ -28,7 +28,7 @@ module ReleaseTrackerApi
           max_age: 0
       end
     end
-    
+
     config.generators do |generate|
       generate.helper false
       generate.assets false
