@@ -18,31 +18,31 @@ RSpec.describe Api::V1::SearchesController, type: :request do
       expect(response_json['result'][0]['name']).to eq 'Will Smith'
     end
 
-    it 'successfully returns related movie title' do
+    it 'successfully returns first related movie title' do
       expect(response_json['result'][0]['known_for'][0]['original_title']).to eq 'Suicide Squad'
     end
 
-    it 'successfully returns first results name' do
+    it 'successfully returns second results name' do
       expect(response_json['result'][12]['name']).to eq 'Willow Smith'
     end
 
-    it 'successfully returns related movie title' do
+    it 'successfully returns second related movie title' do
       expect(response_json['result'][12]['known_for'][0]['original_title']).to eq 'I Am Legend'
     end
 
-    it 'successfully returns first results name' do
-      expect(response_json['result'][17]['name']).to eq 'Wilson Smith'
+    it 'successfully returns third results name' do
+      expect(response_json['result'][5]['name']).to eq 'Will Rae Smith'
     end
 
-    it 'successfully returns related movie title' do
-      expect(response_json['result'][17]['known_for'][1]['original_title']).to eq 'Krisha'
+    it 'successfully returns third related movie title' do
+      expect(response_json['result'][5]['known_for'][0]['original_title']).to eq 'Narcopolis'
     end
 
-    it 'successfully returns first results name' do
+    it 'successfully returns fourth results name' do
       expect(response_json['result'][19]['name']).to eq 'Willie Smith III'
     end
 
-    it 'successfully returns related movie title' do
+    it 'successfully returns fourth related movie title' do
       expect(response_json['result'][19]['known_for'][0]['original_title']).to eq 'Jesus Christ Superstar Live in Concert'
     end
   end
