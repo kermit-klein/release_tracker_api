@@ -30,6 +30,7 @@ RSpec.configure do |config|
   config.filter_gems_from_backtrace("webmock")
   config.filter_gems_from_backtrace("rest-client")
   config.filter_gems_from_backtrace("rack*")
+  config.filter_gems_from_backtrace("bootsnap")
   config.include FactoryBot::Syntax::Methods
   config.include(Shoulda::Matchers::ActiveRecord, type: :model)
   config.include ResponseJSON
@@ -42,5 +43,14 @@ RSpec.configure do |config|
           'Host' => 'api.themoviedb.org'
         }
       ).to_return({ status: 200, body: file_fixture('tom_hanks_credits.json'), headers: {} })
+
+      stub_request(:get, "https://api.themoviedb.org/3/person/33/movie_credits?api_key=#{Rails.application.credentials.movie_db[:api_key]}")
+      .with(
+        headers: {
+          'Accept' => '*/*',
+          'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'Host' => 'api.themoviedb.org'
+        }
+      ).to_return({ status: 200, body: file_fixture('tom_hanks_stopped_working.json'), headers: {} })
   end
 end
