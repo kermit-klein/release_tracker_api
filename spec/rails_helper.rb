@@ -27,7 +27,9 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
-  # config.filter_gems_from_backtrace("gem name")
+  config.filter_gems_from_backtrace("webmock")
+  config.filter_gems_from_backtrace("rest-client")
+  config.filter_gems_from_backtrace("rack*")
   config.include FactoryBot::Syntax::Methods
   config.include(Shoulda::Matchers::ActiveRecord, type: :model)
   config.include ResponseJSON
@@ -37,8 +39,7 @@ RSpec.configure do |config|
         headers: {
           'Accept' => '*/*',
           'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-          'Host' => 'api.themoviedb.org',
-          'User-Agent' => 'rest-client/2.1.0 (linux-gnu x86_64) ruby/2.5.1p57'
+          'Host' => 'api.themoviedb.org'
         }
       ).to_return({ status: 200, body: file_fixture('tom_hanks_credits.json'), headers: {} })
   end
