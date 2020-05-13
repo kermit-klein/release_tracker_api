@@ -1,0 +1,101 @@
+{
+  "page": 1,
+  "total_results": 27,
+  "total_pages": 2,
+  "results": [
+    {
+      "known_for_department": "Acting",
+      "id": 2888,
+      "name": "Will Smith",
+      "known_for": [
+        {
+          "release_date": "2016-08-03",
+          "id": 297761,
+          "vote_count": 15365,
+          "video": false,
+          "media_type": "movie",
+          "vote_average": 5.9,
+          "title": "Suicide Squad",
+          "genre_ids": [28, 12, 80, 14, 878],
+          "original_title": "Suicide Squad",
+          "original_language": "en",
+          "adult": false,
+          "backdrop_path": "/3wIn53fLeP09RyRosAk9Luq7U6q.jpg",
+          "overview": "From DC Comics comes the Suicide Squad, an antihero team of incarcerated supervillains who act as deniable assets for the United States government, undertaking high-risk black ops missions in exchange for commuted prison sentences.",
+          "poster_path": "/7X1Tjt5N1eFCfNq3wUQSoTorobB.jpg"
+        },
+        {
+          "release_date": "2007-12-14",
+          "id": 6479,
+          "vote_count": 10553,
+          "video": false,
+          "media_type": "movie",
+          "vote_average": 7.1,
+          "title": "I Am Legend",
+          "genre_ids": [28, 18, 27, 878, 53],
+          "original_title": "I Am Legend",
+          "original_language": "en",
+          "adult": false,
+          "backdrop_path": "/xHWB9SdYRFV3nw1O0iL6GTedQQY.jpg",
+          "overview": "Robert Neville is a scientist who was unable to stop the spread of the terrible virus that was incurable and man-made. Immune, Neville is now the last human survivor in what is left of New York City and perhaps the world. For three years, Neville has faithfully sent out daily radio messages, desperate to find any other survivors who might be out there. But he is not alone.",
+          "poster_path": "/iPDkaSdKk2jRLTM65UOEoKtsIZ8.jpg"
+        },
+        {
+          "poster_path": "/uLOmOF5IzWoyrgIF5MfUnh5pa1X.jpg",
+          "id": 607,
+          "vote_count": 9403,
+          "video": false,
+          "media_type": "movie",
+          "adult": false,
+          "backdrop_path": "/1GJvBE7UWU1WOVi0XREl4JQc7f8.jpg",
+          "genre_ids": [28, 12, 35, 878],
+          "original_title": "Men in Black",
+          "original_language": "en",
+          "title": "Men in Black",
+          "vote_average": 7.1,
+          "overview": "After a police chase with an otherworldly being, a New York City cop is recruited as an agent in a top-secret organization established to monitor and police alien activity on Earth: the Men in Black. Agent Kay and new recruit Agent Jay find themselves in the middle of a deadly plot by an intergalactic terrorist who has arrived on Earth to assassinate two ambassadors from opposing galaxies.",
+          "release_date": "1997-07-02"
+        }
+      ],
+      "popularity": 15.552,
+      "profile_path": "/eze9FO9VuryXLP0aF2cRqPCcibN.jpg",
+      "gender": 2,
+      "media_type": "person",
+      "adult": false
+    },
+    {
+      "vote_count": 6,
+      "popularity": 0.6,
+      "id": 413131,
+      "video": false,
+      "media_type": "movie",
+      "vote_average": 7.3,
+      "title": "Will Smith: Live in Concert",
+      "release_date": "",
+      "original_language": "en",
+      "original_title": "Will Smith: Live in Concert",
+      "genre_ids": [10402],
+      "backdrop_path": null,
+      "adult": false,
+      "overview": "Will Smith performs live in concert some of his old and new hits.",
+      "poster_path": "/3jfOK5O8HEa6F8cRLVmLTm0YlE8.jpg"
+    },
+    {
+      "poster_path": null,
+      "popularity": 0.6,
+      "vote_count": 0,
+      "video": true,
+      "media_type": "movie",
+      "id": 323930,
+      "adult": false,
+      "backdrop_path": null,
+      "original_language": "en",
+      "original_title": "The Will Smith - Music Video Collection",
+      "genre_ids": [10402],
+      "title": "The Will Smith - Music Video Collection",
+      "vote_average": 0,
+      "overview": "The Will Smith - Music Video Collection",
+      "release_date": "1999-12-07"
+    }
+  ]
+}
