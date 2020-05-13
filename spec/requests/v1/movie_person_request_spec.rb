@@ -10,7 +10,7 @@ RSpec.describe "MoviePeople", type: :request do
     end
 
     it 'returns a response with all information on actor/director selected' do
-      expect(response_json).to eq movie_person_response_json
+      expect(response_json['cast'].first['title']).to eq 'Forrest Gump'   
     end
 
   end
