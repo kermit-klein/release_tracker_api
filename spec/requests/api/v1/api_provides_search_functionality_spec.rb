@@ -1,8 +1,5 @@
-# frozen_string_literal: true
-
-require 'rails_helper'
 RSpec.describe Api::V1::SearchesController, type: :request do
-  describe 'GET /api/v1/searches/' do
+  describe 'GET /api/v1/searches/ successfully' do
     before do
       get '/api/v1/searches/',
           params: {
@@ -44,6 +41,23 @@ RSpec.describe Api::V1::SearchesController, type: :request do
 
     it 'successfully returns fourth related movie title' do
       expect(response_json['result'][19]['known_for'][0]['original_title']).to eq 'Jesus Christ Superstar Live in Concert'
+    end
+  end
+
+  describe 'GET /api/v1/searches/ unsuccessfully' do
+    before do
+      get '/api/v1/searches/',
+          params: {
+            q: ''
+          }
+    end
+
+    it 'empty query should return a 422 response' do
+      expect(response).to have_http_status 422
+    end
+
+    it 'empty query returns error message' do
+      expect(response_json['result']['errors'][0]).to eq "query must be provided"
     end
   end
 end
