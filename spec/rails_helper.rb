@@ -6,10 +6,10 @@ require 'spec_helper'
 
 ENV['RAILS_ENV'] ||= 'test'
 
-require 'webmock/rspec'
-WebMock.enable!
-include WebMock::API
-WebMock::API
+# require 'webmock/rspec'
+# WebMock.enable!
+# include WebMock::API
+# WebMock::API
 
 require File.expand_path('../config/environment', __dir__)
 
@@ -28,6 +28,7 @@ end
 Dir[Rails.root.join('spec/support/**/*.rb')].sort.each { |f| require f }
 
 RSpec.configure do |config|
+  config.include ResponseJSON
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
