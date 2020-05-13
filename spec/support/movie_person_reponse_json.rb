@@ -3,82 +3,82 @@
 module MoviePersonResponseJSON
   def movie_person_response_json
     {
-      "page": 1,
-      "total_results": 1,
-      "total_pages": 1,
-      "results": [
-        {
-          "popularity": 13.974,
-          "known_for_department": 'Acting',
-          "name": 'Tom Hanks',
-          "id": 31,
-          "profile_path": "\/2gY92j2lkNHL2cThBhPmgXLd5PL.jpg",
-          "adult": false,
-          "known_for": [
-            {
-              "poster_path": "\/arw2vcBveWOVZr6pxd9XTd1TdQa.jpg",
-              "vote_count": 17_813,
-              "video": false,
-              "media_type": 'movie',
-              "id": 13,
-              "adult": false,
-              "backdrop_path": "\/7c9UVPPiTPltouxRVY6N9uugaVA.jpg",
-              "original_language": 'en',
-              "original_title": 'Forrest Gump',
-              "genre_ids": [
-                35,
-                18,
-                10_749
-              ],
-              "title": 'Forrest Gump',
-              "vote_average": 8.4,
-              "overview": 'A man with a low IQ has accomplished great things in his life and been present during significant historic events—in each case, far exceeding what anyone imagined he could do. But despite all he has achieved, his one true love eludes him.',
-              "release_date": '1994-07-06'
-            },
-            {
-              "poster_path": "\/uXDfjJbdP4ijW5hWSBrPrlKpxab.jpg",
-              "vote_count": 12_271,
-              "video": false,
-              "media_type": 'movie',
-              "id": 862,
-              "adult": false,
-              "backdrop_path": "\/lxD5ak7BOoinRNehOCA85CQ8ubr.jpg",
-              "original_language": 'en',
-              "original_title": 'Toy Story',
-              "genre_ids": [
-                16,
-                35,
-                10_751
-              ],
-              "title": 'Toy Story',
-              "vote_average": 7.9,
-              "overview": "Led by Woody, Andy's toys live happily in his room until Andy's birthday brings Buzz Lightyear onto the scene. Afraid of losing his place in Andy's heart, Woody plots against Buzz. But when circumstances separate Buzz and Woody from their owner, the duo eventually learns to put aside their differences.",
-              "release_date": '1995-10-30'
-            },
-            {
-              "vote_count": 10_135,
-              "id": 857,
-              "video": false,
-              "media_type": 'movie',
-              "vote_average": 8.1,
-              "title": 'Saving Private Ryan',
-              "release_date": '1998-07-24',
-              "original_language": 'en',
-              "original_title": 'Saving Private Ryan',
-              "genre_ids": [
-                18,
-                36,
-                10_752
-              ],
-              "backdrop_path": "\/hjQp148VjWF4KjzhsD90OCMr11h.jpg",
-              "adult": false,
-              "overview": 'As U.S. troops storm the beaches of Normandy, three brothers lie dead on the battlefield, with a fourth trapped behind enemy lines. Ranger captain John Miller and seven men are tasked with penetrating German-held territory and bringing the boy home.',
-              "poster_path": "\/JC8KQ2BXaAIFEU8zEuakiwUQSr.jpg"
-            }
-          ],
-          "gender": 2
-        }
+      "id":31,
+      "cast":[
+         {  
+            "release_date":"2020-06-12",
+            "title":"Greyhound",
+            "genre_ids":[
+               28,
+               18,
+               10752
+            ],
+            "overview":"A first-time captain leads a convoy of allied ships carrying thousands of soldiers across the treacherous waters of the “Black Pit” to the front lines of WW2. With no air cover protection for 5 days, the captain and his convoy must battle the surrounding enemy Nazi U-boats in order to give the allies a chance to win the war.",
+            "poster_path":"\/eQJEXtDXpfEoDBRGkZ6LtPKacSl.jpg"
+         },
+         {
+            "release_date":"2020-10-02",
+            "title":"BIOS",
+            "genre_ids":[
+               18,
+               878
+            ],
+            "overview":"On a post-apocalyptic Earth, a robot, built to protect the life of his dying creator's beloved dog, learns about life, love, friendship, and what it means to be human.",
+            "poster_path":null
+         },
+         {
+            "poster_path":"\/bqIUrgUfFYS62Dnyxn9KTLhSVWl.jpg",
+            "genre_ids":[
+               18,
+               37
+            ],
+            "title":"News of the World",
+            "overview":"A Texan traveling across the wild West bringing the news of the world to local townspeople, agrees to help rescue a young girl who was kidnapped.",
+            "release_date":"2020-12-25"
+         },
+         {
+            "release_date":"2021-11-05",
+            "title":"Elvis",
+            "genre_ids":[
+               18,
+               10402
+            ],
+            "overview":"A biopic about Elvis Presley, with focus on his early years.",
+            "poster_path":null
+         },
+         {
+            "overview":"During the first 3 days of the Normandy invasion, the 82nd Airborne Division struggled to capture and hold crucial crossing points over the Merderet River. As the hours and days passed, the water turned to blood in a battle without retreat.",
+            "poster_path":null,
+            "title":"No Better Place to Die",
+            "genre_ids":[
+               18,
+               10752
+            ],
+            "release_date":"2020-06-05",
+         },
+         {
+            "overview":"A Texan traveling across the wild West bringing the news of the world to local townspeople, agrees to help rescue a young girl who was kidnapped.",
+            "release_date":"2020-12-25",
+            "title":"News of the World",
+            "genre_ids":[
+               18,
+               37
+            ],
+            "poster_path":"\/bqIUrgUfFYS62Dnyxn9KTLhSVWl.jpg",
+         },
+         {
+            "overview":"A first-time captain leads a convoy of allied ships carrying thousands of soldiers across the treacherous waters of the “Black Pit” to the front lines of WW2. With no air cover protection for 5 days, the captain and his convoy must battle the surrounding enemy Nazi U-boats in order to give the allies a chance to win the war.",
+            "poster_path":"\/eQJEXtDXpfEoDBRGkZ6LtPKacSl.jpg",
+            "title":"Greyhound",
+            "genre_ids":[
+               28,
+               18,
+               10752
+            ],
+            "release_date":"2020-06-12",
+         }
       ]
-    }
+      
+   }
   end
 end
