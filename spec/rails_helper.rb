@@ -39,5 +39,7 @@ RSpec.configure do |config|
       .to_return(status: 200, body: file_fixture('will_smith_search_response.json'), headers: {})
     stub_request(:get, "https://api.themoviedb.org/3/search/multi?api_key=#{api_key}&language=en-US&query=&page=1&include_adult=false")
       .to_return(status: :unprocessable_entity, body: '{"result": {"errors": ["query must be provided"]} }', headers: {})
+    stub_request(:get, "https://api.themoviedb.org/3/search/multi?api_key=#{api_key}&language=en-US&query=uuaaoo&page=1&include_adult=false")
+      .to_return(status: 200, body: file_fixture('no_content.json'), headers: {})
     end
 end

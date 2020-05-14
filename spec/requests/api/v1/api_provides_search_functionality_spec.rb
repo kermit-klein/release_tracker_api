@@ -68,4 +68,17 @@ RSpec.describe Api::V1::SearchesController, type: :request do
       expect(response_json['data']['errors'][0]).to eq "query must be provided"
     end
   end
+
+  describe 'GET /api/v1/searches/ without result' do
+    before do
+      get '/api/v1/searches/',
+        params: {
+          q: 'uuaaoo'
+        }
+    end
+ 
+    it 'Should return 204' do
+      expect(response).to have_http_status 204
+    end
+  end
 end

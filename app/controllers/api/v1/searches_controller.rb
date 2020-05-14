@@ -7,9 +7,8 @@ class Api::V1::SearchesController < ApplicationController
       response = RestClient.get("https://api.themoviedb.org/3/search/multi?api_key=#{api_key}&language=en-US&query=#{params[:q]}&page=1&include_adult=false")
       response_body = JSON.parse(response.body)
       render json: serialize_response(response_body)
-
     rescue 
-      render json: { result: {errors:["query must be provided"]} }, status: :unprocessable_entity
+      render json: { data: {errors:["query must be provided"]} }, status: :unprocessable_entity
     end
   end
 
@@ -24,6 +23,6 @@ class Api::V1::SearchesController < ApplicationController
     movies.map! { |movie|
       { id: movie['id'], type: "movie", title: movie['title'], overview: movie['overview'], release_date: movie['release_date'] }
     }
-    { status: :ok, data: { people: people, movies: movies } }
+    resp = { status: data['results'].empty? ? :no_content : :ok, data: { people: people, movies: movies } }
   end
 end
