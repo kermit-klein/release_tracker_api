@@ -1,5 +1,6 @@
 require 'date'
 class Api::V1::MoviePersonController < ApplicationController
+  include GenreTranslator
   def show
     begin
       api_key = Rails.application.credentials.movie_db[:api_key]
@@ -17,6 +18,8 @@ class Api::V1::MoviePersonController < ApplicationController
   def serialize_person(data)
     cast = data['cast'] || []
     crew = data['crew'] || []
+    genre = id_to_name(18)
+    binding.pry
     upcoming_cast = cast.select {|movie| movie['release_date'].to_s > Date.today.prev_month(3).to_s }
     upcoming_crew = crew.select {|movie| (movie['release_date'].to_s > Date.today.prev_month(3).to_s) && (movie['job'] === 'Director') }
     upcoming = upcoming_cast.concat(upcoming_crew)
