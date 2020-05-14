@@ -5,9 +5,8 @@ class Api::V1::MoviePersonController < ApplicationController
       api_key = Rails.application.credentials.movie_db[:api_key]
       response = RestClient.get("https://api.themoviedb.org/3/person/#{params[:id]}/movie_credits?api_key=#{api_key}")
       response_body = JSON.parse(response.body)
-      reply = serialize_actor(response_body)
+      reply = serialize_person(response_body)
     rescue => exception
-      puts exception
       reply = { data: exception.message || "Something went wrong", status: exception.message.to_i || 500}
     end
     render json: reply[:data], status: reply[:status]
@@ -15,12 +14,16 @@ class Api::V1::MoviePersonController < ApplicationController
 
   private
 
-  def serialize_actor(data)
-    upcoming = data['cast'].select {|movie| movie['release_date'].to_s > Date.today.prev_month(3).to_s }
+  def serialize_person(data)
+    cast = data['cast'] || []
+    crew = data['crew'] || []
+    upcoming_cast = cast.select {|movie| movie['release_date'].to_s > Date.today.prev_month(3).to_s }
+    upcoming_crew = crew.select {|movie| (movie['release_date'].to_s > Date.today.prev_month(3).to_s) && (movie['job'] === 'Director') }
+    upcoming = upcoming_cast.concat(upcoming_crew)
     upcoming.map!{ |movie|
       {
         title: movie['title'],
-        role: "Actor(#{movie['character']})",
+        role: movie['character'] ? "Actor(#{movie['character']})" : 'Director',
         release_date: movie['release_date'],
         description: movie['overview'],
         image: "https://image.tmdb.org/t/p/w154#{movie['poster_path']}"

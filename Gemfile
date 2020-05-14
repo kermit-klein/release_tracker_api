@@ -9,7 +9,6 @@ gem 'puma', '~> 4.1'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'rack-cors'
 gem 'rest-client'
-gem 'active_model_serializers'
 
 group :development, :test do
   gem 'pry-rails'

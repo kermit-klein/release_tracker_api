@@ -13,7 +13,7 @@ RSpec.describe "MoviePeople", type: :request do
     end
 
     it 'returns a list of recent and upcoming movies' do
-      expect(response_json['movies'].length).to eq 4
+      expect(response_json['movies'].length).to eq 5
     end
 
     it 'only lists recent or future films' do
