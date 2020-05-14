@@ -10,37 +10,45 @@ RSpec.describe Api::V1::SearchesController, type: :request do
     it 'should return a 200 response' do
       expect(response).to have_http_status 200
     end
+    
+    it "successfully returns first result's media type" do
+      expect(response_json['result'][0]['media_type']).to eq 'person'
+    end
 
-    it 'successfully returns first results name' do
+    it 'for person, successfully returns name' do
       expect(response_json['result'][0]['name']).to eq 'Will Smith'
     end
 
-    it 'successfully returns first related movie title' do
-      expect(response_json['result'][0]['known_for'][0]['original_title']).to eq 'Suicide Squad'
+    it "for person, successfully returns related movie title" do
+      expect(response_json['result'][0]['known_for']['title']).to eq 'Suicide Squad'
+    end
+    
+    it "for person, successfully returns id" do
+      expect(response_json['result'][0]['id']).to eq 2888
     end
 
-    it 'successfully returns second results name' do
-      expect(response_json['result'][12]['name']).to eq 'Willow Smith'
+    it "for person, successfully returns role" do
+      expect(response_json['result'][0]['known_for']['role']).to eq 'Acting'
+    end
+    
+    it "successfully returns third result's media type" do
+      expect(response_json['result'][2]['media_type']).to eq 'movie'
     end
 
-    it 'successfully returns second related movie title' do
-      expect(response_json['result'][12]['known_for'][0]['original_title']).to eq 'I Am Legend'
+    it 'for movie, successfully returns title' do
+      expect(response_json['result'][2]['title']).to eq 'The Will Smith - Music Video Collection'
     end
 
-    it 'successfully returns third results name' do
-      expect(response_json['result'][5]['name']).to eq 'Will Rae Smith'
+    it "for movie, successfully returns release date" do
+      expect(response_json['result'][2]['release_date']).to eq '1999-12-07'
+    end
+    
+    it "for movie, successfully returns id" do
+      expect(response_json['result'][2]['id']).to eq 323930
     end
 
-    it 'successfully returns third related movie title' do
-      expect(response_json['result'][5]['known_for'][0]['original_title']).to eq 'Narcopolis'
-    end
-
-    it 'successfully returns fourth results name' do
-      expect(response_json['result'][19]['name']).to eq 'Willie Smith III'
-    end
-
-    it 'successfully returns fourth related movie title' do
-      expect(response_json['result'][19]['known_for'][0]['original_title']).to eq 'Jesus Christ Superstar Live in Concert'
+    it "for movie, successfully returns overview" do
+      expect(response_json['result'][2]['overview']).to eq 'The Will Smith - Music Video Collection'
     end
   end
 
