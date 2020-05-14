@@ -51,16 +51,17 @@ RSpec.describe "MoviePeople", type: :request do
 
   describe 'GET/api/v1/movie_person/ genre params' do
     before do
-      get '/api/v1/movie_person/31', {genres: ["War", "Music"]}
+      @genres = ["War", "Music"]
+      get '/api/v1/movie_person/31', params: {genres: @genres}
     end
   
     it 'returns only movies that has these genres' do
       expect(response_json['movies'].length).to eq 3
     end
 
-    it 'each returned movies has atleast on of the genres' do
+    it 'each returned movies has atleast one of the genres' do
       response_json['movies'].each do |movie|
-        expect(movie['genres']).to eq "War"
+        expect(movie['genres'] & @genres).not_to eq []
       end
     end
   end
