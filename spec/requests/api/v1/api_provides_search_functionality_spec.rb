@@ -11,45 +11,44 @@ RSpec.describe Api::V1::SearchesController, type: :request do
       expect(response).to have_http_status 200
     end
     
-    it "successfully returns type of first result" do
-      binding.pry
-      expect(response_json['result'][0]['type']).to eq 'person'
+    it "successfully returns type of person result" do
+      expect(response_json['data']['people'][0]['type']).to eq 'person'
     end
     
     it "for person, successfully returns id" do
-      expect(response_json['result'][0]['id']).to eq 2888
+      expect(response_json['data']['people'][0]['id']).to eq 2888
     end
 
     it 'for person, successfully returns name' do
-      expect(response_json['result'][0]['name']).to eq 'Will Smith'
+      expect(response_json['data']['people'][0]['name']).to eq 'Will Smith'
     end
 
     it "for person, successfully returns related movie title" do
-      expect(response_json['result'][0]['known_for_movie']).to eq 'Suicide Squad'
+      expect(response_json['data']['people'][0]['known_for_movie']).to eq 'Suicide Squad'
     end
 
     it "for person, successfully returns role" do
-      expect(response_json['result'][0]['known_for_role']).to eq 'Acting'
+      expect(response_json['data']['people'][0]['known_for_role']).to eq 'Acting'
     end
     
-    it "successfully returns type of third result" do
-      expect(response_json['result'][2]['media_type']).to eq 'movie'
+    it "successfully returns type of movie result" do
+      expect(response_json['data']['movies'][0]['type']).to eq 'movie'
     end
     
-    it "for movie, successfully returns id" do
-      expect(response_json['result'][2]['id']).to eq 323930
+    it "for upcoming movie, successfully returns id" do
+      expect(response_json['data']['movies'][0]['id']).to eq 2027
     end
 
-    it 'for movie, successfully returns title' do
-      expect(response_json['result'][2]['title']).to eq 'The Will Smith - Music Video Collection'
+    it 'for upcoming movie, successfully returns title' do
+      expect(response_json['data']['movies'][0]['title']).to eq 'I Am Legend 2027 remake'
     end
 
-    it "for movie, successfully returns release date" do
-      expect(response_json['result'][2]['release_date']).to eq '1999-12-07'
+    it "for upcoming movie, successfully returns release date" do
+      expect(response_json['data']['movies'][0]['release_date']).to eq '2027-12-14'
     end
 
-    it "for movie, successfully returns overview" do
-      expect(response_json['result'][2]['overview']).to eq 'The Will Smith - Music Video Collection'
+    it "for upcoming movie, successfully returns overview" do
+      expect(response_json['data']['movies'][0]['overview']).to eq 'Robert Neville is a scientist. But he is not alone. Not even in 2027'
     end
   end
 
@@ -66,7 +65,7 @@ RSpec.describe Api::V1::SearchesController, type: :request do
     end
 
     it 'empty query returns error message' do
-      expect(response_json['result']['errors'][0]).to eq "query must be provided"
+      expect(response_json['data']['errors'][0]).to eq "query must be provided"
     end
   end
 end
