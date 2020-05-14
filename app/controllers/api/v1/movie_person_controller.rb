@@ -1,10 +1,15 @@
 require 'date'
 class Api::V1::MoviePersonController < ApplicationController
-  def show 
-    api_key = Rails.application.credentials.movie_db[:api_key]
-    response = RestClient.get("https://api.themoviedb.org/3/person/#{params[:id]}/movie_credits?api_key=#{api_key}")
-    response_body = JSON.parse(response.body)
-    reply = serialize_actor(response_body)
+  def show
+    begin
+      api_key = Rails.application.credentials.movie_db[:api_key]
+      response = RestClient.get("https://api.themoviedb.org/3/person/#{params[:id]}/movie_credits?api_key=#{api_key}")
+      response_body = JSON.parse(response.body)
+      reply = serialize_actor(response_body)
+    rescue => exception
+      puts exception
+      reply = { data: exception.message || "Something went wrong", status: exception.message.to_i || 500}
+    end
     render json: reply[:data], status: reply[:status]
   end
 
