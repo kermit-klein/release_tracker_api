@@ -11,8 +11,13 @@ RSpec.describe Api::V1::SearchesController, type: :request do
       expect(response).to have_http_status 200
     end
     
-    it "successfully returns first result's media type" do
-      expect(response_json['result'][0]['media_type']).to eq 'person'
+    it "successfully returns type of first result" do
+      binding.pry
+      expect(response_json['result'][0]['type']).to eq 'person'
+    end
+    
+    it "for person, successfully returns id" do
+      expect(response_json['result'][0]['id']).to eq 2888
     end
 
     it 'for person, successfully returns name' do
@@ -20,19 +25,19 @@ RSpec.describe Api::V1::SearchesController, type: :request do
     end
 
     it "for person, successfully returns related movie title" do
-      expect(response_json['result'][0]['known_for']['title']).to eq 'Suicide Squad'
-    end
-    
-    it "for person, successfully returns id" do
-      expect(response_json['result'][0]['id']).to eq 2888
+      expect(response_json['result'][0]['known_for_movie']).to eq 'Suicide Squad'
     end
 
     it "for person, successfully returns role" do
-      expect(response_json['result'][0]['known_for']['role']).to eq 'Acting'
+      expect(response_json['result'][0]['known_for_role']).to eq 'Acting'
     end
     
-    it "successfully returns third result's media type" do
+    it "successfully returns type of third result" do
       expect(response_json['result'][2]['media_type']).to eq 'movie'
+    end
+    
+    it "for movie, successfully returns id" do
+      expect(response_json['result'][2]['id']).to eq 323930
     end
 
     it 'for movie, successfully returns title' do
@@ -41,10 +46,6 @@ RSpec.describe Api::V1::SearchesController, type: :request do
 
     it "for movie, successfully returns release date" do
       expect(response_json['result'][2]['release_date']).to eq '1999-12-07'
-    end
-    
-    it "for movie, successfully returns id" do
-      expect(response_json['result'][2]['id']).to eq 323930
     end
 
     it "for movie, successfully returns overview" do
