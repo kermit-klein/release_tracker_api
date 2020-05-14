@@ -37,14 +37,7 @@ RSpec.configure do |config|
   config.before do
     stub_request(:get, "https://api.themoviedb.org/3/search/multi?api_key=#{api_key}&language=en-US&query=Will%20Smith&page=1&include_adult=false")
       .to_return(status: 200, body: file_fixture('will_smith_search_response.json'), headers: {})
-    stub_request(:get, "https://api.themoviedb.org/3/search/multi?api_key=#{api_key}&language=en-US&page=1&include_adult=false")
-      .with(
-        headers: {
-        'Accept'=>'*/*',
-        'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-        'Host'=>'api.themoviedb.org',
-        'User-Agent'=>'rest-client/2.1.0 (darwin19.4.0 x86_64) ruby/2.5.1p57'
-        })
-      .to_return(status: 200, body: '{"errors": ["query must be provided"]}', headers: {})
+    stub_request(:get, "https://api.themoviedb.org/3/search/multi?api_key=#{api_key}&language=en-US&query=&page=1&include_adult=false")
+      .to_return(status: :unprocessable_entity, body: '{"result": {"errors": ["query must be provided"]} }', headers: {})
     end
 end
