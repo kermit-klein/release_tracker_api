@@ -19,7 +19,7 @@ class Api::V1::SearchesController < ApplicationController
   private
 
   def serialize_response(data)
-    people = data['results'].select {|result| result['media_type'] === "person"}
+    people = data['results'].select {|result| result['media_type'] === "person" && (result['known_for_department'] === "Acting" || result['known_for_department'] === "Directing")}
     people.map! { |person|
       { id: person['id'], type: "person", name: person['name'], known_for_role: person['known_for_department'], known_for_movie: person['known_for'][0]['title'] }
     }
@@ -27,6 +27,6 @@ class Api::V1::SearchesController < ApplicationController
     movies.map! { |movie|
       { id: movie['id'], type: "movie", title: movie['title'], overview: movie['overview'], release_date: movie['release_date'] }
     }
-    resp = { status: :ok, data: { people: people, movies: movies } }
+    resp = { status: :ok, data: { people: people[0..4], movies: movies } }
   end
 end

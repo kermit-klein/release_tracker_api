@@ -10,6 +10,10 @@ RSpec.describe Api::V1::SearchesController, type: :request do
     it 'should return a 200 response' do
       expect(response).to have_http_status 200
     end
+
+    it 'should return at most 5 people' do
+      expect(response_json['data']['people'].count).to eq 5
+    end
     
     it "successfully returns type of person result" do
       expect(response_json['data']['people'][0]['type']).to eq 'person'
@@ -27,8 +31,24 @@ RSpec.describe Api::V1::SearchesController, type: :request do
       expect(response_json['data']['people'][0]['known_for_movie']).to eq 'Suicide Squad'
     end
 
-    it "for person, successfully returns role" do
+    it "for person, successfully returns role, only acting or directing" do
       expect(response_json['data']['people'][0]['known_for_role']).to eq 'Acting'
+    end
+
+    it "for person, successfully returns role, only acting or directing" do
+      expect(response_json['data']['people'][1]['known_for_role']).to eq 'Acting'
+    end
+
+    it "for person, successfully returns role, only acting or directing" do
+      expect(response_json['data']['people'][2]['known_for_role']).to eq 'Acting'
+    end
+
+    it "for person, successfully returns role, only acting or directing" do
+      expect(response_json['data']['people'][3]['known_for_role']).to eq 'Acting'
+    end
+
+    it "for person, successfully returns role, only acting or directing" do
+      expect(response_json['data']['people'][4]['known_for_role']).to eq 'Directing'
     end
     
     it "successfully returns type of movie result" do
