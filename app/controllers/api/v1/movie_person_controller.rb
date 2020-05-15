@@ -1,5 +1,6 @@
 require 'date'
 class Api::V1::MoviePersonController < ApplicationController
+  include GenreTranslator
   def show
     begin
       api_key = Rails.application.credentials.movie_db[:api_key]
@@ -21,14 +22,20 @@ class Api::V1::MoviePersonController < ApplicationController
     upcoming_crew = crew.select {|movie| (movie['release_date'].to_s > Date.today.prev_month(3).to_s) && (movie['job'] === 'Director') }
     upcoming = upcoming_cast.concat(upcoming_crew)
     upcoming.map!{ |movie|
+      genres = movie['genre_ids'].map{|genre| GenreTranslator.id_to_name(genre)}
       {
         title: movie['title'],
         role: movie['character'] ? "Actor(#{movie['character']})" : 'Director',
         release_date: movie['release_date'],
         description: movie['overview'],
-        image: "https://image.tmdb.org/t/p/w154#{movie['poster_path']}"
+        image: "https://image.tmdb.org/t/p/w154#{movie['poster_path']}",
+        genres: genres
       }
     }
+    
+    if (params.has_key?('genres') && upcoming.length != 0)
+      upcoming.select! {|movie| (movie[:genres] & params[:genres]).length != 0 }
+    end
     { status: upcoming.length == 0 ? :no_content : :ok, data: { id: data['id'], movies: upcoming }}
   end
 end
