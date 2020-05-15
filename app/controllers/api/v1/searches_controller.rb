@@ -12,7 +12,7 @@ class Api::V1::SearchesController < ApplicationController
         render json: serialize_response(response_body)
       end
     rescue 
-      render json: { error_message: "query must be provided" }, status: :unprocessable_entity
+      render json: { error_message: "Query must be provided" }, status: :unprocessable_entity
     end
   end
 

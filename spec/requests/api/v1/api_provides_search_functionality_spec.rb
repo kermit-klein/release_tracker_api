@@ -85,7 +85,7 @@ RSpec.describe Api::V1::SearchesController, type: :request do
     end
 
     it 'empty query returns error message' do
-      expect(response_json['error_message']).to eq "query must be provided"
+      expect(response_json['error_message']).to eq "Query must be provided"
     end
   end
 
