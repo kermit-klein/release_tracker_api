@@ -1,4 +1,4 @@
-class FacebookLoginController < DeviseTokenAuth::RegistrationController
+class FacebookLoginController < DeviseTokenAuth::RegistrationsController
 
   def create
     if params[:provider] == 'facebook'
@@ -12,12 +12,12 @@ class FacebookLoginController < DeviseTokenAuth::RegistrationController
           client_id: token.client,
           uid: params[:uid],
           expiry: token.expiry,
-        }
+        } 
         render json: auth_params
       else
         render json: { error: 'Authentication with Facebook failed' }, status: 401
       end
-      render
+      return
     else
       super
     end
