@@ -22,6 +22,10 @@ RSpec.describe Api::V1::SearchesController, type: :request do
     it "successfully returns person's name" do
       expect(response_json['data'][0]['name']).to eq 'Will Smith'
     end
+    
+    it "successfully returns path to person's picture" do
+      expect(response_json['data'][0]['picture']).to eq '/eze9FO9VuryXLP0aF2cRqPCcibN.jpg'
+    end
 
     it "successfully returns person's related movie title" do
       expect(response_json['data'][0]['known_for_movie']).to eq 'Suicide Squad'

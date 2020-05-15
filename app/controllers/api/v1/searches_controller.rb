@@ -21,7 +21,7 @@ class Api::V1::SearchesController < ApplicationController
   def serialize_response(data)
     people = data['results'].select {|result| result['media_type'] === "person" && (result['known_for_department'] === "Acting" || result['known_for_department'] === "Directing")}
     people.map! { |person|
-      { id: person['id'], name: person['name'], known_for_role: person['known_for_department'], known_for_movie: person['known_for'][0]['title'] }
+      { id: person['id'], name: person['name'], picture: person['profile_path'], known_for_role: person['known_for_department'], known_for_movie: person['known_for'][0]['title'] }
     }
     { status: :ok, data: people[0..4] }
   end
