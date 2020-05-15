@@ -4,11 +4,6 @@ require 'spec_helper'
 
 ENV['RAILS_ENV'] ||= 'test'
 
-require 'webmock/rspec'
-WebMock.enable!
-include WebMock::API
-WebMock::API
-
 require File.expand_path('../config/environment', __dir__)
 
 if Rails.env.production?
