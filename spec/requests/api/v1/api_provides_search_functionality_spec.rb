@@ -65,7 +65,7 @@ RSpec.describe Api::V1::SearchesController, type: :request do
     end
 
     it 'empty query returns error message' do
-      expect(response_json['data']['errors'][0]).to eq "query must be provided"
+      expect(response_json['error_message']).to eq "query must be provided"
     end
   end
 
@@ -77,8 +77,14 @@ RSpec.describe Api::V1::SearchesController, type: :request do
         }
     end
  
-    it 'Should return 204' do
-      expect(response).to have_http_status 204
+    it 'Should return 400' do
+      expect(response).to have_http_status 400
     end
+    
+    it 'Should return an error message' do
+      expect(response_json['error_message']).to eq "No results found"
+    end
+
+
   end
 end
