@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :movie_person, only: :show
-      resources :user_selection, only: [:show, :create, :update, :delete]
+      resources :user_selection, only: [:index, :create, :update, :delete]
     end
   end
 end
