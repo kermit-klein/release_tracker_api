@@ -12,15 +12,9 @@ RSpec.describe User, type: :request do
 
     #  @user_id = response_json['data']['id']
     #  @user_header = response.headers
-    
-    #  get '/api/v1/movie_person/31'
-    #   person_id = response_json['id']
       # headers = { HTTP_ACCEPT: "application/json" }.merge!(@user_header)
-     post '/api/v1/user_selection/', params: { user: user.id }
-     post '/api/v1/user_selection/', params: { user: user.id }
-    #  @user_id = response_json['user_id']
-    #  @person_id = response_json['person_id']
-    # binding.pry
+     post '/api/v1/user_selection/', params: { user: user.id, person_id: 31 }
+     post '/api/v1/user_selection/', params: { user: user.id, person_id: 30 }
     end
 
     it 'returns a 200 http response' do
@@ -32,21 +26,8 @@ RSpec.describe User, type: :request do
 
     it 'user can view its tracked persons' do
       get '/api/v1/user_selection/',params: { user_id: user.id }
-      # selection = response_json
-      # binding.pry
-      # expect(response_json['data']['data']['movies'][0]['genre']).to eq 'Action'
+      binding.pry
+      expect(response_json['data']['movies']['genres'].second).to have_data('Action')
     end
-
-    ## !!! HILFE !!!!!
-    # DO WE NEED A SERIALIZER TO MAKE THIS EASIER ????
-    # it 'returns genre' do
-    #   binding.pry
-    #   expect(response_json['data']['data']['movies'][0]['genre']).to eq 'Action'
-    # end
-
-    ## NOT RETURNING THE EXPECTED ID..... 
-    # it 'returns id of tracked person' do
-    #   expect(response_json['data']['id']).to eq 31
-    # end
   end
 end
