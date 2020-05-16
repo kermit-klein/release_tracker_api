@@ -34,23 +34,23 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include(Shoulda::Matchers::ActiveRecord, type: :model)
   config.include ResponseJSON
-  config.before do
-    stub_request(:get, "https://api.themoviedb.org/3/person/31/movie_credits?api_key=#{Rails.application.credentials.movie_db[:api_key]}")
-      .with(
-        headers: {
-          'Accept' => '*/*',
-          'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-          'Host' => 'api.themoviedb.org'
-        }
-      ).to_return({ status: 200, body: file_fixture('tom_hanks_credits.json'), headers: {} })
+  # config.before do
+  #   stub_request(:get, "https://api.themoviedb.org/3/person/31/movie_credits?api_key=#{Rails.application.credentials.movie_db[:api_key]}")
+  #     .with(
+  #       headers: {
+  #         'Accept' => '*/*',
+  #         'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  #         'Host' => 'api.themoviedb.org'
+  #       }
+  #     ).to_return({ status: 200, body: file_fixture('tom_hanks_credits.json'), headers: {} })
 
-      stub_request(:get, "https://api.themoviedb.org/3/person/33/movie_credits?api_key=#{Rails.application.credentials.movie_db[:api_key]}")
-      .with(
-        headers: {
-          'Accept' => '*/*',
-          'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-          'Host' => 'api.themoviedb.org'
-        }
-      ).to_return({ status: 200, body: file_fixture('tom_hanks_stopped_working.json'), headers: {} })
-  end
+  #     stub_request(:get, "https://api.themoviedb.org/3/person/33/movie_credits?api_key=#{Rails.application.credentials.movie_db[:api_key]}")
+  #     .with(
+  #       headers: {
+  #         'Accept' => '*/*',
+  #         'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+  #         'Host' => 'api.themoviedb.org'
+  #       }
+  #     ).to_return({ status: 200, body: file_fixture('tom_hanks_stopped_working.json'), headers: {} })
+  # end
 end
