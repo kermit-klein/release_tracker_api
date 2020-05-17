@@ -1,7 +1,7 @@
-# require 'webmock/rspec'
-# WebMock.disable_net_connect!(allow_localhost: true)
-# include WebMock::API
-# WebMock.enable!
+require 'webmock/rspec'
+WebMock.disable_net_connect!(allow_localhost: true)
+include WebMock::API
+WebMock.enable!
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
