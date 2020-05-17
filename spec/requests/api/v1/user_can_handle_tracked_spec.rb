@@ -27,5 +27,10 @@ RSpec.describe UserSelection, type: :request do
       get '/api/v1/user_selection', headers: headers
       expect(response_json['user_selection'].first['name']).to eq 'Tom Hanks'
     end
+
+    it 'people not in the cached list of names also gets a name' do
+      post '/api/v1/user_selection', params: { person_id: 2328 }, headers: headers
+      expect(response_json['user_selection'].last['name']).to eq 'Manuel Corrales'
+    end
   end
 end

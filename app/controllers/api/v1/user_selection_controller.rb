@@ -13,7 +13,7 @@ class Api::V1::UserSelectionController < ApplicationController
   end
 
   def index
-    person_list = current_user.user_selections # = [ 6,5,3,1,76,8 ]
+    person_list = current_user.user_selections
     with_names = serialize_response(person_list)
     render json: { user_id: current_user[:id], user_selection: with_names }
   end
