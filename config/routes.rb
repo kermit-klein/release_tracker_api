@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :searches, only: :index
-      resources :movie_person, only: :show
-      resources :user_selection, only: [:index, :create, :update, :delete]
+      resources :movie_person, only: [:index, :show]
+      resources :user_selection, only: [:index, :create, :delete]
     end
   end
 end

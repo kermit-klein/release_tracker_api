@@ -49,5 +49,9 @@ RSpec.configure do |config|
       .to_return({ status: 200, body: file_fixture('tom_hanks_stopped_working.json'), headers: {} })
     stub_request(:get, "https://api.themoviedb.org/3/person/2328?api_key=#{Rails.application.credentials.movie_db[:api_key]}")
       .to_return({ status: 200, body: file_fixture('about_manuel_corrales.json'), headers: {} })
+    stub_request(:get, "https://api.themoviedb.org/3/person/572541/movie_credits?api_key=#{Rails.application.credentials.movie_db[:api_key]}")
+    .to_return({ status: 200, body: file_fixture('caleb_landry_jones_credits.json'), headers: {} })
+    stub_request(:get, "https://api.themoviedb.org/3/person/88888/movie_credits?api_key=#{Rails.application.credentials.movie_db[:api_key]}")
+    .to_return({ status: 200, body: file_fixture('no_content_credits.json'), headers: {} })
   end
 end

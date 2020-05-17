@@ -3,9 +3,12 @@
 require 'json'
 module PersonIdTranslator
   def self.id_to_name(id)
+    if id == nil
+      return ""
+    end
     file = File.read(File.join(Rails.root, 'lib', 'cached', 'person_ids.json'))
     data = JSON.parse(file)
-    name = data.find { |person| person['id'] == id } || { 'name' => get_name_from_db(id) }
+    name = data.find { |person| person['id'] == id } || { 'name' => self.get_name_from_db(id) }
     name['name']
   end
 
@@ -17,7 +20,11 @@ module PersonIdTranslator
 
   def get_name_from_db(id)
     api_key = Rails.application.credentials.movie_db[:api_key]
-    person = JSON.parse(RestClient.get("https://api.themoviedb.org/3/person/#{id}?api_key=#{api_key}"))
+    begin
+      person = JSON.parse(RestClient.get("https://api.themoviedb.org/3/person/#{id}?api_key=#{api_key}"))
+    rescue => exception
+      person = {"name" => "Error"}
+    end
     person ? person['name'] : 'Error'
   end
 end
