@@ -9,7 +9,6 @@ class Api::V1::UserSelectionController < ApplicationController
 
   def create
     current_user.user_selections.create(person_id: params[:person_id])
-    index
   end
 
   def index
